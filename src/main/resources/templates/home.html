@@ -1,62 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>ArmAnts</title>
-  <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
-  <link rel="stylesheet" th:href="@{/css/home.css}">
+  <head>
+    <title>ArmAnts</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
 
-</head>
-<body>
-<div class="container mt-4">
+  </head>
+  <body>
+  <div class="container-fluid">
+
+    <header class="header">
+      <div>
+        <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
+        <span>ArmAnts</span>
+      </div>
+    </header>
 
 
-  <header>
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand" href="#">
-          <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
-        </a>
-        <a class="navbar-brand text-dark" href="#">ArmAnts</a>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
+        <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
+        <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
+        <a th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
+        <a th:href="@{/coordenador/empresas}">Listagem Empresas</a>
+        <a href="#">Sair</a>
       </div>
     </nav>
-  </header>
 
 
-  <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between my-4">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" th:href="@{/aluno/novo}">Cadastro Alunos</a>
-      <a class="nav-item nav-link" th:href="@{/empresas/novo}">Cadastro Empresas</a>
-      <a class="nav-item nav-link" th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
-      <a class="nav-item nav-link" th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
-      <a class="nav-item nav-link" th:href="@{/coordenador/empresas}">Listagem Empresas</a>
-    </div>
-    <div>
-      <a href="#" class="btn btn-outline-secondary">Sair</a>
-    </div>
-  </nav>
-
-
-  <main>
-    <div class="container">
-      <h1 class="text-center">Bem-vindo ao Sistema de Estágio ArmAnts</h1>
-      <hr>
-      <p class="text-center">Aqui o seu talento encontra oportunidades!</p>
-    </div>
-  </main>
-
-
-  <footer class="container">
-    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-        </a>
-        <span class="mb-3 mb-md-0 text-muted">&copy; 2024 ArmAnts - IFPB</span>
+    <div class="content">
+      <div>
+        <h1>Bem-vindo ao Sistema de Estágio ArmAnts</h1>
+        <p>Aqui o seu talento encontra oportunidades!</p>
       </div>
     </div>
-  </footer>
 
 
-</div>
-</body>
+    <footer class="footer">
+      <span>&copy; 2024 ArmAnts - IFPB</span>
+    </footer>
+  </div>
+
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/js/popper.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
 </html>

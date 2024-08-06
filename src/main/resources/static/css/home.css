@@ -1,47 +1,73 @@
-.body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
+
 .header {
     background-color: #00998c;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
 }
-.nav {
+
+.header img {
+    width: 100px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.header span {
+    font-size: 36px;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(119, 236, 226, 0.43);
+    color: white;
+}
+.content {
+    flex: 1;
     display: flex;
     justify-content: center;
-    background-color: #085b9a;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    color: black;
+}
+.content p {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+h1 {
+    line-height: 1.5;
+    font-size: 35px;
+}
+.navbar {
+    background-color: #0c5953;
     padding: 10px 0;
 }
-.nav a {
+.navbar a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
     font-size: 18px;
 }
-.nav a:hover {
+.navbar a:hover {
     text-decoration: underline;
 }
-.container {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.container h1 {
-    font-size: 32px;
-    color: #333;
-}
-.footer {
+footer {
     background-color: #00998c;
     color: white;
     text-align: center;
     padding: 15px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
