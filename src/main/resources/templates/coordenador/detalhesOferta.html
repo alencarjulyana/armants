@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Detalhes da Oferta</title>
+    <meta charset="UTF-8">
+    <title>Detalhes da Oferta de Estágio</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-<div class="container mt-4">
-    <h1>Detalhes da Oferta de Estágio</h1>
-    <div class="mb-4">
-        <h5 class="card-title" th:text="${oferta.atividadePrincipal}">Atividade Principal</h5>
-        <p class="card-text">Carga Horária Semanal: <span th:text="${oferta.cargaHorariaSemanal}"></span></p>
-        <p class="card-text">Valor Pago: <span th:text="${oferta.valorPago}"></span></p>
-        <p class="card-text">Vale Transporte: <span th:text="${oferta.valeTransporte ? 'Sim' : 'Não'}"></span></p>
-        <p class="card-text">Pré-Requisitos: <span th:text="${oferta.preRequisitos}"></span></p>
-        <p class="card-text">Habilidades Necessárias: <span th:text="${oferta.habilidadesNecessarias}"></span></p>
-        <p class="card-text">Habilidades Desejáveis: <span th:text="${oferta.habilidadesDesejaveis}"></span></p>
-        <p class="card-text">Empresa: <span th:text="${oferta.empresa.nome}"></span></p>
-        <p class="card-text">Status: <span th:text="${oferta.isDeleted ?  'Cancelada' : 'Ativa'}"></span></p>
-    </div>
-    <h3>Empresa</h3>
-    <div>
-        <h4 th:text="${empresa.nome}">Nome da Empresa</h4>
-        <p>CNPJ: <span th:text="${empresa.cnpj}"></span></p>
-        <p>Endereço: <span th:text="${empresa.endereco}"></span></p>
+<div class="container-fluid">
+    <!-- Header -->
+    <header class="header">
         <div>
-            <a th:href="@{'/empresa/' + ${empresa.id} + '/download-documento'}" class="btn btn-primary">
-                Baixar Documento Comprovação (PDF)
-            </a>
+            <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
+            <span>ArmyAnts</span>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
+            <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
+            <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
+            <a th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
+            <a th:href="@{/coordenador/empresas}">Listagem Empresas</a>
+            <a href="#">Sair</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Detalhes da Oferta de Estágio</h1>
+        <div class="mb-4">
+            <h5 class="card-title" th:text="${oferta.atividadePrincipal}">Atividade Principal</h5>
+            <p class="card-text">Carga Horária Semanal: <span th:text="${oferta.cargaHorariaSemanal}"></span></p>
+            <p class="card-text">Valor Pago: <span th:text="${oferta.valorPago}"></span></p>
+            <p class="card-text">Vale Transporte: <span th:text="${oferta.valeTransporte ? 'Sim' : 'Não'}"></span></p>
+            <p class="card-text">Pré-Requisitos: <span th:text="${oferta.preRequisitos}"></span></p>
+            <p class="card-text">Habilidades Necessárias: <span th:text="${oferta.habilidadesNecessarias}"></span></p>
+            <p class="card-text">Habilidades Desejáveis: <span th:text="${oferta.habilidadesDesejaveis}"></span></p>
+            <p class="card-text">Empresa: <span th:text="${oferta.empresa.nome}"></span></p>
+            <p class="card-text">Status: <span th:text="${oferta.isDeleted ? 'Cancelada' : 'Ativa'}"></span></p>
+        </div>
+        <h3>Empresa</h3>
+        <div>
+            <h4 th:text="${empresa.nome}">Nome da Empresa</h4>
+            <p>CNPJ: <span th:text="${empresa.cnpj}"></span></p>
+            <p>Endereço: <span th:text="${empresa.endereco}"></span></p>
+            <div>
+                <a th:href="@{'/empresa/' + ${empresa.id} + '/download-documento'}" class="btn btn-primary">
+                    Baixar Documento Comprovação (PDF)
+                </a>
+            </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; 2024 ArmAnts - IFPB</span>
+    </footer>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

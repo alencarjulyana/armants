@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <meta charset="UTF-8">
     <title>Alunos Candidatos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-<div class="container mt-4">
-    <h1>Alunos Candidatos</h1>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Matrícula</th>
-            <th>CPF</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="aluno : ${alunos}">
-            <td th:text="${aluno.id}"></td>
-            <td th:text="${aluno.nome}"></td>
-            <td th:text="${aluno.matricula}"></td>
-            <td th:text="${aluno.cpf}"></td>
-            <td>
-                <a th:href="@{/coordenador/alunos-candidatos/{id}(id=${aluno.id})}" class="btn btn-info">Ver Detalhes</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
+            <span>ArmyAnts</span>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
+            <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
+            <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
+            <a th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
+            <a th:href="@{/coordenador/empresas}">Listagem Empresas</a>
+            <a href="#">Sair</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Alunos Candidatos</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>CPF</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aluno : ${alunos}">
+                <td th:text="${aluno.id}"></td>
+                <td th:text="${aluno.nome}"></td>
+                <td th:text="${aluno.matricula}"></td>
+                <td th:text="${aluno.cpf}"></td>
+                <td>
+                    <a th:href="@{/coordenador/alunos-candidatos/{id}(id=${aluno.id})}" class="btn btn-info">Ver Detalhes</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; 2024 ArmAnts - IFPB</span>
+    </footer>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
