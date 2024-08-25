@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalhes da Empresa</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Detalhes da Empresa</h1>
+    <div>
+        <h4 th:text="${empresa.nome}">Nome da Empresa</h4>
+        <p>CNPJ: <span th:text="${empresa.cnpj}"></span></p>
+        <p>Endereço: <span th:text="${empresa.endereco}"></span></p>
+        <p>Telefone: <span th:text="${empresa.telefone}"></span></p>
+        <p>Email: <span th:text="${empresa.email}"></span></p>
+        <p>Pessoa de Contato: <span th:text="${empresa.pessoaContato}"></span></p>
+        <p>Atividade Principal: <span th:text="${empresa.atividadePrincipal}"></span></p>
+        <p>URL da Empresa: <a th:href="${empresa.urlEmpresa}" th:text="${empresa.urlEmpresa}"></a></p>
+        <a th:href="@{/empresas/{id}/download-documento(id=${empresa.id})}" class="btn btn-success">Baixar Comprovante</a>
+    </div>
+</div>
+</body>
+</html>

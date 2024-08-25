@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Ofertas de Estágio</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Ofertas de Estágio</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Atividade Principal</th>
+      <th>CH Semanal</th>
+      <th>Valor Pago</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="oferta : ${ofertas}">
+      <td th:text="${oferta.atividadePrincipal}"></td>
+      <td th:text="${oferta.cargaHorariaSemanal}"></td>
+      <td th:text="${#numbers.formatDecimal(oferta.valorPago, 1, 2)}"></td>
+      <td th:text="${oferta.isDeleted ?  'Cancelada' : 'Ativa'}"></td>
+      <td>
+        <form th:action="@{/ofertas/cancelar/{id}(id=${oferta.id})}" method="post">
+          <button type="submit" class="btn btn-danger">Cancelar</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/ofertas/nova}" class="btn btn-success">Cadastrar Nova Oferta</a>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

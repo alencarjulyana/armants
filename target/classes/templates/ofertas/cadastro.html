@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Oferta de Estágio</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Cadastro de Oferta de Estágio</h2>
+    <form th:action="@{/ofertas/nova}" th:object="${oferta}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="atividadePrincipal" class="form-label">Atividade Principal:</label>
+            <input type="text" id="atividadePrincipal" th:field="*{atividadePrincipal}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="cargaHorariaSemanal" class="form-label">Carga Horária Semanal:</label>
+            <input type="number" id="cargaHorariaSemanal" th:field="*{cargaHorariaSemanal}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="valorPago" class="form-label">Valor Pago (R$):</label>
+            <input type="number" id="valorPago" th:field="*{valorPago}" class="form-control" step="0.01">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" id="valeTransporte" th:field="*{valeTransporte}" class="form-check-input">
+            <label for="valeTransporte" class="form-check-label">Vale Transporte</label>
+        </div>
+        <div class="mb-3">
+            <label for="preRequisitos" class="form-label">Pré-requisitos:</label>
+            <input type="text" id="preRequisitos" th:field="*{preRequisitos}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="habilidadesNecessarias" class="form-label">Habilidades Necessárias:</label>
+            <input type="text" id="habilidadesNecessarias" th:field="*{habilidadesNecessarias}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="habilidadesDesejaveis" class="form-label">Habilidades Desejáveis:</label>
+            <input type="text" id="habilidadesDesejaveis" th:field="*{habilidadesDesejaveis}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar Oferta</button>
+    </form>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

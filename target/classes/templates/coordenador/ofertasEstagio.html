@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ofertas de Estágio</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Ofertas de Estágio</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Atividade Principal</th>
+            <th>Carga Horária Semanal</th>
+            <th>Valor Pago</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="oferta : ${ofertas}">
+            <td th:text="${oferta.id}"></td>
+            <td th:text="${oferta.atividadePrincipal}"></td>
+            <td th:text="${oferta.cargaHorariaSemanal}"></td>
+            <td th:text="${oferta.valorPago}"></td>
+            <td th:text="${oferta.isDeleted ?  'Cancelada' : 'Ativa'}"></td>
+            <td>
+                <a th:href="@{/coordenador/ofertas-estagio/{id}(id=${oferta.id})}" class="btn btn-info">Ver Detalhes</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
