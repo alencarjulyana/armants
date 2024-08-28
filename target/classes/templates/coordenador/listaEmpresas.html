@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <meta charset="UTF-8">
     <title>Lista de Empresas</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-<div class="container mt-4">
-    <h1>Lista de Empresas</h1>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>CNPJ</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="empresa : ${empresas}">
-            <td th:text="${empresa.nome}">Nome</td>
-            <td th:text="${empresa.cnpj}">CNPJ</td>
-            <td>
-                <a th:href="@{/coordenador/empresas/{id}(id=${empresa.id})}" class="btn btn-primary">Ver Detalhes</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
+            <span>ArmyAnts</span>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
+            <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
+            <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
+            <a th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
+            <a th:href="@{/coordenador/empresas}">Listagem Empresas</a>
+            <a href="#">Sair</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Lista de Empresas</h1>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="empresa : ${empresas}">
+                <td th:text="${empresa.nome}">Nome</td>
+                <td th:text="${empresa.cnpj}">CNPJ</td>
+                <td>
+                    <a th:href="@{/coordenador/empresas/{id}(id=${empresa.id})}" class="btn btn-primary">Ver Detalhes</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; 2024 ArmAnts - IFPB</span>
+    </footer>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -1,73 +1,129 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
+    <meta charset="UTF-8">
     <title>Cadastro de Empresa</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
+
 <body>
-<div class="container mt-5">
-    <h2>Cadastro de Empresa</h2>
-
-    <form th:action="@{/empresas/novo}" th:object="${empresa}" method="post" enctype="multipart/form-data">
-        <div class="form-group mb-3">
-            <label for="nome">Nome da Empresa</label>
-            <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Nome da Empresa" required>
-            <div th:if="${#fields.hasErrors('nome')}" class="text-danger" th:errors="*{nome}"></div>
+<div class="container-fluid">
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
+            <span>ArmyAnts</span>
         </div>
+    </header>
 
-        <div class="form-group mb-3">
-            <label for="cnpj">CNPJ</label>
-            <input type="text" th:field="*{cnpj}" class="form-control" id="cnpj" placeholder="CNPJ" required>
-            <div th:if="${#fields.hasErrors('cnpj')}" class="text-danger" th:errors="*{cnpj}"></div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
+            <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
+            <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
+            <a th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
+            <a th:href="@{/coordenador/empresas}">Listagem Empresas</a>
+            <a href="#">Sair</a>
         </div>
+    </nav>
 
-        <div class="form-group mb-3">
-            <label for="endereco">Endereço</label>
-            <input type="text" th:field="*{endereco}" class="form-control" id="endereco" placeholder="Endereço" required>
-            <div th:if="${#fields.hasErrors('endereco')}" class="text-danger" th:errors="*{endereco}"></div>
-        </div>
+    <!-- Main Content -->
+    <div class="content">
+        <h2>Cadastro de Empresa</h2>
 
-        <div class="form-group mb-3">
-            <label for="telefone">Telefone de Contato</label>
-            <input type="text" th:field="*{telefone}" class="form-control" id="telefone" placeholder="Telefone" required>
-            <div th:if="${#fields.hasErrors('telefone')}" class="text-danger" th:errors="*{telefone}"></div>
-        </div>
+        <form th:action="@{/empresas/novo}" th:object="${empresa}" method="post" enctype="multipart/form-data">
+            <div class="container">
+                <div class="row mb-3">
+                    <label for="nome" class="col-sm-3 col-form-label">Nome da Empresa:</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Nome da Empresa" required>
+                        <div th:if="${#fields.hasErrors('nome')}" class="text-danger" th:errors="*{nome}"></div>
+                    </div>
+                </div>
 
-        <div class="form-group mb-3">
-            <label for="email">Email de Contato</label>
-            <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Email" required>
-            <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
-        </div>
+                <div class="row mb-3">
+                    <label for="cnpj" class="col-sm-3 col-form-label">CNPJ:</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{cnpj}" class="form-control" id="cnpj" placeholder="CNPJ" required>
+                        <div th:if="${#fields.hasErrors('cnpj')}" class="text-danger" th:errors="*{cnpj}"></div>
+                    </div>
+                </div>
 
-        <div class="form-group mb-3">
-            <label for="pessoaContato">Pessoa de Contato</label>
-            <input type="text" th:field="*{pessoaContato}" class="form-control" id="pessoaContato" placeholder="Pessoa de Contato" required>
-            <div th:if="${#fields.hasErrors('pessoaContato')}" class="text-danger" th:errors="*{pessoaContato}"></div>
-        </div>
+                <div class="row mb-3">
+                    <label for="endereco" class="col-sm-3 col-form-label">Endereço:</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{endereco}" class="form-control" id="endereco" placeholder="Endereço" required>
+                        <div th:if="${#fields.hasErrors('endereco')}" class="text-danger" th:errors="*{endereco}"></div>
+                    </div>
+                </div>
 
-        <div class="form-group mb-3">
-            <label for="atividadePrincipal">Atividade Principal</label>
-            <input type="text" th:field="*{atividadePrincipal}" class="form-control" id="atividadePrincipal" placeholder="Atividade Principal" required>
-            <div th:if="${#fields.hasErrors('atividadePrincipal')}" class="text-danger" th:errors="*{atividadePrincipal}"></div>
-        </div>
+                <div class="row mb-3">
+                    <label for="telefone" class="col-sm-3 col-form-label">Telefone de Contato:</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{telefone}" class="form-control" id="telefone" placeholder="Telefone" required>
+                        <div th:if="${#fields.hasErrors('telefone')}" class="text-danger" th:errors="*{telefone}"></div>
+                    </div>
+                </div>
 
-        <div class="form-group mb-3">
-            <label for="urlEmpresa">URL da Empresa</label>
-            <input type="url" th:field="*{urlEmpresa}" class="form-control" id="urlEmpresa" placeholder="URL da Empresa" required>
-            <div th:if="${#fields.hasErrors('urlEmpresa')}" class="text-danger" th:errors="*{urlEmpresa}"></div>
-        </div>
+                <div class="row mb-3">
+                    <label for="email" class="col-sm-3 col-form-label">Email de Contato:</label>
+                    <div class="col-sm-9">
+                        <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Email" required>
+                        <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
+                    </div>
+                </div>
 
-        <div class="form-group mb-3">
-            <label for="documentoComprovacao">Documento de Comprovação de Endereço (PDF)</label>
-            <input type="file" th:field="*{documentoComprovacao}" class="form-control-file" id="documentoComprovacao" required>
-            <div th:if="${#fields.hasErrors('documentoComprovacao')}" class="text-danger" th:errors="*{documentoComprovacao}"></div>
-        </div>
+                <div class="row mb-3">
+                    <label for="pessoaContato" class="col-sm-3 col-form-label">Pessoa de Contato:</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{pessoaContato}" class="form-control" id="pessoaContato" placeholder="Pessoa de Contato" required>
+                        <div th:if="${#fields.hasErrors('pessoaContato')}" class="text-danger" th:errors="*{pessoaContato}"></div>
+                    </div>
+                </div>
 
-        <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
-    </form>
+                <div class="row mb-3">
+                    <label for="atividadePrincipal" class="col-sm-3 col-form-label">Atividade Principal:</label>
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{atividadePrincipal}" class="form-control" id="atividadePrincipal" placeholder="Atividade Principal" required>
+                        <div th:if="${#fields.hasErrors('atividadePrincipal')}" class="text-danger" th:errors="*{atividadePrincipal}"></div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="urlEmpresa" class="col-sm-3 col-form-label">URL da Empresa:</label>
+                    <div class="col-sm-9">
+                        <input type="url" th:field="*{urlEmpresa}" class="form-control" id="urlEmpresa" placeholder="URL da Empresa" required>
+                        <div th:if="${#fields.hasErrors('urlEmpresa')}" class="text-danger" th:errors="*{urlEmpresa}"></div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="documentoComprovacao" class="col-sm-3 col-form-label">Documento de Comprovação de Endereço (PDF):</label>
+                    <div class="col-sm-9">
+                        <input type="file" th:field="*{documentoComprovacao}" class="form-control-file" id="documentoComprovacao" required>
+                        <div th:if="${#fields.hasErrors('documentoComprovacao')}" class="text-danger" th:errors="*{documentoComprovacao}"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; 2024 ArmAnts - IFPB</span>
+    </footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
+
+
 </html>

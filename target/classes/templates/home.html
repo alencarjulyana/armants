@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>ArmAnts</title>
+    <title>ArmyAnts</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{/css/home.css}">
 
@@ -12,13 +12,14 @@
     <header class="header">
       <div>
         <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
-        <span>ArmAnts</span>
+        <span>ArmyAnts</span>
       </div>
     </header>
 
 
     <nav class="navbar navbar-expand-lg">
       <div class="container">
+        <a th:href="@{/}">Home</a>
         <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
         <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
         <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
@@ -31,7 +32,7 @@
 
     <div class="content">
       <div>
-        <h1>Bem-vindo ao Sistema de Estágio ArmAnts</h1>
+        <h1>Bem-vindo ao Sistema de Estágio ArmyAnts</h1>
         <p>Aqui o seu talento encontra oportunidades!</p>
       </div>
     </div>
