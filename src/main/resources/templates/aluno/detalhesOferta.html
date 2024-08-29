@@ -1,65 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <title>Detalhes da Oferta</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="/css/home.css"> <!-- Inclua o arquivo CSS comum -->
+    <link rel="stylesheet" href="/css/home.css">
+    <meta th:insert="~{/home :: headfiles}">
 </head>
 <body>
-<div class="container-fluid">
-    <!-- Header -->
-    <header class="header bg-light py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a th:href="@{/aluno/dashboard}" class="navbar-brand">
-                <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
-                <span>ArmyAnts</span>
-            </a>
-            <span>Detalhes da Oferta</span>
-        </div>
-    </header>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a th:href="@{/}">Home</a>
-            <a th:href="@{/aluno/dashboard}" class="navbar-brand">Home</a>
-            <a th:href="@{/aluno/ofertas}" class="nav-link">Ofertas de Estágio</a>
-            <a th:href="@{/aluno/perfil}" class="nav-link">Perfil</a>
-            <a href="#" class="nav-link">Sair</a>
-        </div>
-    </nav>
+<div th:replace="~{/home :: header}"></div>
 
-    <!-- Main Content -->
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${oferta.atividadePrincipal}">Atividade Principal</h5>
-                <p class="card-text">Carga Horária Semanal: <span th:text="${oferta.cargaHorariaSemanal}"></span></p>
-                <p class="card-text">Valor Pago: <span th:text="${oferta.valorPago}"></span></p>
-                <p class="card-text">Vale Transporte: <span th:text="${oferta.valeTransporte ? 'Sim' : 'Não'}"></span></p>
-                <p class="card-text">Pré-Requisitos: <span th:text="${oferta.preRequisitos}"></span></p>
-                <p class="card-text">Habilidades Necessárias: <span th:text="${oferta.habilidadesNecessarias}"></span></p>
-                <p class="card-text">Habilidades Desejáveis: <span th:text="${oferta.habilidadesDesejaveis}"></span></p>
-                <p class="card-text">Empresa: <span th:text="${oferta.empresa.nome}"></span></p>
-                <button type="button" class="btn btn-secondary" th:if="${oferta.isDeleted}" disabled>
-                    Oferta cancelada
-                </button>
-                <form th:action="@{/aluno/ofertas/{id}/candidatar(id=${oferta.id})}" method="post">
-                    <button type="submit" class="btn btn-primary" th:if="${!jaCandidatou}">Candidatar</button>
-                    <button type="button" class="btn btn-secondary" th:if="${jaCandidatou}" disabled>Já Candidatou</button>
-                </form>
-                <a th:href="@{/aluno/ofertas}" class="btn btn-secondary mt-3">Voltar para Ofertas</a>
-            </div>
+<div class="container mt-4 flex-fill">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${oferta.atividadePrincipal}">Atividade Principal</h5>
+            <p class="card-text">Carga Horária Semanal: <span th:text="${oferta.cargaHorariaSemanal}"></span></p>
+            <p class="card-text">Valor Pago: <span th:text="${oferta.valorPago}"></span></p>
+            <p class="card-text">Vale Transporte: <span th:text="${oferta.valeTransporte ? 'Sim' : 'Não'}"></span></p>
+            <p class="card-text">Pré-Requisitos: <span th:text="${oferta.preRequisitos}"></span></p>
+            <p class="card-text">Habilidades Necessárias: <span th:text="${oferta.habilidadesNecessarias}"></span></p>
+            <p class="card-text">Habilidades Desejáveis: <span th:text="${oferta.habilidadesDesejaveis}"></span></p>
+            <p class="card-text">Empresa: <span th:text="${oferta.empresa.nome}"></span></p>
+            <button type="button" class="btn btn-secondary" th:if="${oferta.isDeleted}" disabled>
+                Oferta cancelada
+            </button>
+            <form th:action="@{/aluno/ofertas/{id}/candidatar(id=${oferta.id})}" method="post">
+                <button type="submit" class="btn btn-primary" th:if="${!jaCandidatou}">Candidatar</button>
+                <button type="button" class="btn btn-secondary" th:if="${jaCandidatou}" disabled>Já Candidatou</button>
+            </form>
+            <a th:href="@{/aluno/ofertas}" class="btn btn-secondary mt-3">Voltar para Ofertas</a>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer bg-light text-center py-3">
-        <span>&copy; 2024 ArmyAnts - IFPB</span>
-    </footer>
 </div>
+
+<div th:replace="~{/home :: footer}"></div>
 
 <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
