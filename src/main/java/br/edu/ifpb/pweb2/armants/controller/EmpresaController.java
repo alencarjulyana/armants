@@ -5,6 +5,7 @@ import br.edu.ifpb.pweb2.armants.service.EmpresaService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -82,5 +83,7 @@ public class EmpresaController {
             return new ResponseEntity<>(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
         }
     }
+
+
 
 }

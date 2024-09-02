@@ -11,9 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -88,5 +86,18 @@ public class CoordenadorController {
 
         model.addAttribute("empresa", empresa);
         return "coordenador/detalhesEmpresa";
+    }
+
+    @GetMapping("/empresas/editar/{id}")
+    public String editarEmpresa(@PathVariable Long id, Model model) {
+        Empresa empresa = empresaService.findById(id).orElseThrow(() -> new RuntimeException("Empresa não encontrada"));
+        model.addAttribute("empresas", empresa);
+        return "coordenador/editarEmpresas";
+    }
+
+    @PostMapping("/empresas/editar/{id}")
+    public String salvarEdicaoEmpresa(@PathVariable Long id, @ModelAttribute("empresa") Empresa empresaAtualizada) {
+        empresaService.atualizarEmpresa(id, empresaAtualizada);
+        return "redirect:/coordenador/listaEmpresas";
     }
 }

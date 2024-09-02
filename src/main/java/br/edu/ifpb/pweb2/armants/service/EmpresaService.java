@@ -37,4 +37,8 @@ public class EmpresaService {
     public Page<Empresa> findAll(Pageable pageable) {
         return empresaRepository.findAll(pageable);
     }
+
+
+    public void atualizarEmpresa(Long id, Empresa empresaAtualizada) {
+    }
 }

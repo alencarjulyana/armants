@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Set;
 
 @Entity
-public class Empresa {
+public class Empresa  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -140,6 +140,6 @@ public class Empresa {
     }
 
 
-
-
+    public void setAtivo(boolean b) {
+    }
 }

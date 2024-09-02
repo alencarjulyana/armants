@@ -16,28 +16,38 @@
 <main class="flex-fill">
     <div class="content">
         <h1>Alunos Candidatos</h1>
+
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Matrícula</th>
-                <th>CPF</th>
-                <th>Ações</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="aluno : ${alunos}">
-                <td th:text="${aluno.id}"></td>
-                <td th:text="${aluno.nome}"></td>
-                <td th:text="${aluno.matricula}"></td>
-                <td th:text="${aluno.cpf}"></td>
-                <td>
-                    <a th:href="@{/coordenador/alunos-candidatos/{id}(id=${aluno.id})}" class="btn btn-info">Ver Detalhes</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Matrícula</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="aluno : ${alunos}">
+                    <td th:text="${aluno.id}"></td>
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.matricula}"></td>
+                    <td th:text="${aluno.cpf}"></td>
+                    <td>
+                        <a th:href="@{/coordenador/alunos-candidatos/{id}(id=${aluno.id})}" class="btn btn-info">Ver Detalhes</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        <div>
+            <span>Page <span th:text="${alunos.number + 1}">1</span> of <span th:text="${alunos.totalPages}">1</span></span>
+            <div>
+                <a th:if="${alunos.hasPrevious()}" th:href="@{/alunos-candidatos(page=${alunos.number - 1})}">Previous</a>
+                <a th:if="${alunos.hasNext()}" th:href="@{/alunos-candidatos(page=${alunos.number + 1})}">Next</a>
+            </div>
+        </div>
+        </div>
     </div>
 </main>
 

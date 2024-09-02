@@ -34,6 +34,14 @@
             </tr>
             </tbody>
         </table>
+
+        <div>
+            <span>Page <span th:text="${empresas.number + 1}">1</span> of <span th:text="${empresas.totalPages}">1</span></span>
+            <div>
+                <a th:if="${empresas.hasPrevious()}" th:href="@{/listaEmpresas(page=${empresas.number - 1})}">Previous</a>
+                <a th:if="${empresas.hasNext()}" th:href="@{/listaEmpresas(page=${empresas.number + 1})}">Next</a>
+            </div>
+        </div>
     </div>
 </main>
 
