@@ -1,20 +1,15 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
-}
-
-.login-container {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .background img {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -28,45 +23,32 @@ body {
     display: flex;
     justify-content: flex-end; /* Mantém o formulário à direita */
     align-items: center;
-    padding-right: 50px; /* Espaçamento da borda direita */
+    padding-right: 30px; /* Espaçamento da borda direita */
+    color: white;
+}
+
+
+.container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end; /* Mantém o formulário à direita */
+    align-items: center;
+    padding-right: 10px;
     color: white;
 }
 
 .login-form {
     background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
-    width: 500px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-
-.content {
-    text-align: left;
-    max-width: 600px;
-    margin-left: 50px;
-}
-
-.content h1 {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.content h1 strong {
-    color: #0c5953;
-}
-
-.content p {
-    margin: 20px 0;
-    font-size: 20px;
-}
-
-.content p strong{
-    color: #0c5953;
-}
 
 .login-form h2 {
     color: #77ECE2; /* Cor clara para melhor contraste */
@@ -108,9 +90,10 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada no hover */
 }
 
-.form-control {
-    width: 100% !important; /* Sobrescreve o width do Bootstrap */
-}
+
+
+
+
 
 
 
