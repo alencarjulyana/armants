@@ -1,0 +1,136 @@
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.login-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.background img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.login-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end; /* Mantém o formulário à direita */
+    align-items: center;
+    padding-right: 50px; /* Espaçamento da borda direita */
+    color: white;
+}
+
+.login-form {
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    padding: 40px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.content {
+    text-align: left;
+    max-width: 600px;
+    margin-left: 50px;
+}
+
+.content h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.content h1 strong {
+    color: #0c5953;
+}
+
+.content p {
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.content p strong{
+    color: #0c5953;
+}
+
+.login-form h2 {
+    color: #77ECE2; /* Cor clara para melhor contraste */
+}
+
+.login-form label {
+    color: #FFF; /* Texto branco para melhor visibilidade */
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.login-form input {
+    background-color: #f4f4f4; /* Cor clara nos campos de input */
+    color: #333; /* Texto escuro */
+}
+
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0c5953;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: rgba(119, 236, 226, 0.43);
+}
+
+.button-cadastre {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    background-color: rgba(119, 236, 226, 0.43); /* Fundo semi-transparente */
+    border: none;
+    border-radius: 30px; /* Bordas arredondadas */
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 50px;
+}
+
+.button-cadastre:hover {
+    background-color: rgba(200, 200, 200, 0.9); /* Fundo mais visível ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada no hover */
+}
+
+
+
+

@@ -6,87 +6,64 @@
     <title>Cadastro de Aluno</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/home.css">
+    <meta th:insert="~{/home :: headfiles}">
 </head>
 
 <body>
-<div class="container-fluid">
-    <!-- Header -->
-    <header class="header">
+
+<div th:replace="~{/home :: header}"></div>
+
+<div class="content">
+    <h2>Cadastro de Alunos</h2>
+
+    <form th:action="@{/aluno/novo}" th:object="${aluno}" method="post">
         <div>
-            <img th:src="@{/imagens/ArmAnts.png}" width="50" height="50" alt="ArmAnts"/>
-            <span>ArmyAnts</span>
-        </div>
-    </header>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a th:href="@{/}">Home</a>
-            <a th:href="@{/aluno/novo}">Cadastro Alunos</a>
-            <a th:href="@{/empresas/novo}">Cadastro Empresas</a>
-            <a th:href="@{/coordenador/alunos-candidatos}">Listagem Alunos</a>
-            <a th:href="@{/coordenador/ofertas-estagio}">Ofertas de Estágio</a>
-            <a th:href="@{/coordenador/empresas}">Listagem Empresas</a>
-            <a href="#">Sair</a>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="content">
-        <h2>Cadastro de Alunos</h2>
-
-        <form th:action="@{/aluno/novo}" th:object="${aluno}" method="post">
-            <div class="container">
-                <div class="row mb-3">
-                    <label for="nome" class="col-sm-3 col-form-label">Nome:</label>
-                    <div class="col-sm-9">
-                        <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Nome Completo" required>
-                        <div th:if="${#fields.hasErrors('nome')}" class="text-danger" th:errors="*{nome}"></div>
-                    </div>
+            <div class="row mb-3">
+                <label for="nome" class="col-sm-3 col-form-label">Nome:</label>
+                <div class="col-sm-9">
+                    <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Nome Completo" required>
+                    <div th:if="${#fields.hasErrors('nome')}" class="text-danger" th:errors="*{nome}"></div>
                 </div>
-
-                <div class="row mb-3">
-                    <label for="matricula" class="col-sm-3 col-form-label">Matrícula:</label>
-                    <div class="col-sm-9">
-                        <input type="text" th:field="*{matricula}" class="form-control" id="matricula" placeholder="Número de Matrícula" required>
-                        <div th:if="${#fields.hasErrors('matricula')}" class="text-danger" th:errors="*{matricula}"></div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="cpf" class="col-sm-3 col-form-label">CPF:</label>
-                    <div class="col-sm-9">
-                        <input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="CPF" required>
-                        <div th:if="${#fields.hasErrors('cpf')}" class="text-danger" th:errors="*{cpf}"></div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="username" class="col-sm-3 col-form-label">Login:</label>
-                    <div class="col-sm-9">
-                        <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Nome de Usuário" required>
-                        <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="senha" class="col-sm-3 col-form-label">Senha:</label>
-                    <div class="col-sm-9">
-                        <input type="password" th:field="*{senha}" class="form-control" id="senha" placeholder="Senha" required>
-                        <div th:if="${#fields.hasErrors('senha')}" class="text-danger" th:errors="*{senha}"></div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
-        </form>
-    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <span>&copy; 2024 ArmAnts - IFPB</span>
-    </footer>
+            <div class="row mb-3">
+                <label for="matricula" class="col-sm-3 col-form-label">Matrícula:</label>
+                <div class="col-sm-9">
+                    <input type="text" th:field="*{matricula}" class="form-control" id="matricula" placeholder="Número de Matrícula" required>
+                    <div th:if="${#fields.hasErrors('matricula')}" class="text-danger" th:errors="*{matricula}"></div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="cpf" class="col-sm-3 col-form-label">CPF:</label>
+                <div class="col-sm-9">
+                    <input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="CPF" required>
+                    <div th:if="${#fields.hasErrors('cpf')}" class="text-danger" th:errors="*{cpf}"></div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="username" class="col-sm-3 col-form-label">Login:</label>
+                <div class="col-sm-9">
+                    <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Nome de Usuário" required>
+                    <div th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="senha" class="col-sm-3 col-form-label">Senha:</label>
+                <div class="col-sm-9">
+                    <input type="password" th:field="*{senha}" class="form-control" id="senha" placeholder="Senha" required>
+                    <div th:if="${#fields.hasErrors('senha')}" class="text-danger" th:errors="*{senha}"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+    </form>
 </div>
+
+<div th:replace="~{/home :: footer}"></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>

@@ -1,7 +1,28 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(119, 236, 226, 0.43);
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: black;
 }
 
 .header {
@@ -27,28 +48,6 @@ html, body {
     font-size: 36px;
 }
 
-.container-fluid {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: rgba(119, 236, 226, 0.43);
-    color: white;
-}
-
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    color: black;
-}
-
-.content h2 {
-    margin-bottom: 20px;
-}
-
 .navbar {
     background-color: #0c5953;
     padding: 10px 0;
@@ -70,6 +69,7 @@ footer {
     color: white;
     text-align: center;
     padding: 15px 0;
+    margin-top: auto;
 }
 
 .col-form-label {
@@ -79,9 +79,15 @@ footer {
 
 .row {
     display: flex;
-    align-items: center; /* Garante que a label e o campo de entrada fiquem alinhados verticalmente */
+    align-items: center;
 }
 
 .form-control {
-    flex: 1; /* Faz com que o campo de entrada ocupe o espaço restante */
+    flex: 1;
 }
+
+
+.btn-primary {
+    padding: 2px 2px;
+}
+
