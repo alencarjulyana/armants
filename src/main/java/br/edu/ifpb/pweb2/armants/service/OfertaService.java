@@ -6,6 +6,8 @@ import br.edu.ifpb.pweb2.armants.model.Oferta;
 import br.edu.ifpb.pweb2.armants.repository.AlunoRepository;
 import br.edu.ifpb.pweb2.armants.repository.OfertaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -39,8 +41,8 @@ public class OfertaService {
         return ofertaRepository.findById(id);
     }
 
-    public List<Oferta> findAll() {
-        return ofertaRepository.findAll();
+    public Page<Oferta> findAll(Pageable pageable) {
+        return ofertaRepository.findAll(pageable);
     }
     public void addCandidato(Long ofertaId, Aluno aluno) {
         Optional<Oferta> ofertaOptional = ofertaRepository.findById(ofertaId);

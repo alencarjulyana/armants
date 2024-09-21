@@ -13,4 +13,11 @@ public class AuthController {
         mav.setViewName("login/login");
         return mav;
     }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(ModelAndView mav) {
+        mav.setViewName("login/login?logout");
+        return mav;
+    }
+
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Detalhes da Oferta de Estágio</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/ofertas.css">
     <meta th:insert="~{/home :: headfiles}">
 </head>
 <body>
@@ -17,7 +17,6 @@
     <main class="flex-fill">
         <div class="container mt-4">
             <h1>Ofertas de Estágio</h1>
-
 
             <form th:action="@{/aluno/ofertas}" method="get" class="mb-4">
                 <div class="row">
@@ -42,25 +41,30 @@
                 </div>
             </form>
 
-
-            <div class="list-group">
-                <div th:each="oferta : ${ofertas}" class="list-group-item">
-                    <h5 th:text="${oferta.atividadePrincipal}">Título da Oferta</h5>
-                    <p>Atividade Principal: <span th:text="${oferta.atividadePrincipal}">Atividade</span></p>
-                    <p>Carga Horária Semanal: <span th:text="${oferta.cargaHorariaSemanal}">Carga Horária</span></p>
-                    <p>Valor Pago: <span th:text="${oferta.valorPago}">Valor</span></p>
-                    <a th:href="@{/aluno/ofertas/{id}(id=${oferta.id})}" class="btn btn-info">Ver Detalhes</a>
-                    <form th:action="@{/aluno/ofertas/{id}/candidatar(id=${oferta.id})}" th:if="${!statusCandidatura[oferta.id] && !oferta.isDeleted}" method="post">
-                        <button type="submit" class="btn btn-primary">Candidatar</button>
-                    </form>
-                    <button type="button" class="btn btn-secondary" th:if="${statusCandidatura[oferta.id]}" disabled>
-                        Já Candidatou
-                    </button>
-                    <button type="button" class="btn btn-secondary" th:if="${oferta.isDeleted}" disabled>
-                        Oferta cancelada
-                    </button>
+            <!-- Usando o sistema de grid do Bootstrap -->
+            <div class="row">
+                <div th:each="oferta : ${ofertas}" class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${oferta.atividadePrincipal}">Título da Oferta</h5>
+                            <p class="card-text">Atividade Principal: <span th:text="${oferta.atividadePrincipal}">Atividade</span></p>
+                            <p class="card-text">Carga Horária Semanal: <span th:text="${oferta.cargaHorariaSemanal}">Carga Horária</span></p>
+                            <p class="card-text">Valor Pago: <span th:text="${oferta.valorPago}">Valor</span></p>
+                            <a th:href="@{/aluno/ofertas/{id}(id=${oferta.id})}" class="btn btn-info">Ver Detalhes</a>
+                            <form th:action="@{/aluno/ofertas/{id}/candidatar(id=${oferta.id})}" th:if="${!statusCandidatura[oferta.id] && !oferta.isDeleted}" method="post">
+                                <button type="submit" class="btn btn-primary">Candidatar</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" th:if="${statusCandidatura[oferta.id]}" disabled>
+                                Já Candidatou
+                            </button>
+                            <button type="button" class="btn btn-secondary" th:if="${oferta.isDeleted}" disabled>
+                                Oferta cancelada
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </main>
 

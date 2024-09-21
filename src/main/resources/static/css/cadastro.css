@@ -42,7 +42,11 @@ body {
     background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
     padding: 30px;
     border-radius: 10px;
+<<<<<<< HEAD
+    width: 400px;
+=======
     width: 700px;
+>>>>>>> 6f553b70a133ca18cdfdcf78ed018dcf8a73e0e4
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,12 +87,15 @@ body {
 
 .login-form button:hover {
     background-color: rgba(119, 236, 226, 0.43);
+
 }
 
 .button-cadastre:hover {
     background-color: rgba(200, 200, 200, 0.9); /* Fundo mais visível ao passar o mouse */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada no hover */
 }
+<<<<<<< HEAD
+=======
 
 
 
@@ -97,3 +104,4 @@ body {
 
 
 
+>>>>>>> 6f553b70a133ca18cdfdcf78ed018dcf8a73e0e4

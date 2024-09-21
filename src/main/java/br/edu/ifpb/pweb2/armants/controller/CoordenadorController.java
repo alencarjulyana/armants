@@ -7,6 +7,8 @@ import br.edu.ifpb.pweb2.armants.service.AlunoService;
 import br.edu.ifpb.pweb2.armants.service.EmpresaService;
 import br.edu.ifpb.pweb2.armants.service.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +31,8 @@ public class CoordenadorController {
     private EmpresaService empresaService;
 
     @GetMapping("/alunos-candidatos")
-    public String listarAlunosCandidatos(Model model) {
-        List<Aluno> alunos = alunoService.findAll();
+    public String listarAlunosCandidatos(Model model, Pageable pageable) {
+        Page<Aluno> alunos = alunoService.findAll(pageable);
         model.addAttribute("alunos", alunos);
         return "coordenador/alunosCandidatos";
     }
@@ -50,8 +52,8 @@ public class CoordenadorController {
     }
 
     @GetMapping("/ofertas-estagio")
-    public String listarOfertasEstagio(Model model) {
-        List<Oferta> ofertas = ofertaService.findAll();
+    public String listarOfertasEstagio(Model model, Pageable pageable) {
+        Page<Oferta> ofertas = ofertaService.findAll(pageable);
         model.addAttribute("ofertas", ofertas);
         return "coordenador/ofertasEstagio";
     }
@@ -70,10 +72,9 @@ public class CoordenadorController {
         return "coordenador/detalhesOferta";
     }
 
-
     @GetMapping("/empresas")
-    public String listarEmpresas(Model model) {
-        List<Empresa> empresas = empresaService.findAll();
+    public String listarEmpresas(Model model, Pageable pageable) {
+        Page<Empresa> empresas = empresaService.findAll(pageable);
         model.addAttribute("empresas", empresas);
         return "coordenador/listaEmpresas";
     }

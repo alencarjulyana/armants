@@ -4,10 +4,11 @@ import br.edu.ifpb.pweb2.armants.model.Aluno;
 import br.edu.ifpb.pweb2.armants.repository.AlunoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -26,8 +27,8 @@ public class AlunoService {
         alunoRepository.save(aluno);
     }
 
-    public List<Aluno> findAll() {
-        return alunoRepository.findAll();
+    public Page<Aluno> findAll(Pageable pageable) {
+        return alunoRepository.findAll(pageable);
     }
 
     public Optional<Aluno> findById(Long id) {

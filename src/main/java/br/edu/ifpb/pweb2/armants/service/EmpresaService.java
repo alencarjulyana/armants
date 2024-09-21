@@ -4,6 +4,8 @@ import br.edu.ifpb.pweb2.armants.model.Empresa;
 import br.edu.ifpb.pweb2.armants.model.Oferta;
 import br.edu.ifpb.pweb2.armants.repository.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +34,7 @@ public class EmpresaService {
         return empresaRepository.findById(id);
     }
 
-    public List<Empresa> findAll() {
-        return empresaRepository.findAll();
+    public Page<Empresa> findAll(Pageable pageable) {
+        return empresaRepository.findAll(pageable);
     }
 }
