@@ -131,6 +131,10 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada no hover */
 }
 
-
-
-
+footer {
+    background-color: #00998c;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}

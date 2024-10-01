@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
 <head th:fragment="headfiles">
     <title>ArmyAnts</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
+
 <body>
 
-<div class="login-container">
     <div class="background">
         <img th:src="@{/imagens/login-background.jpg}" alt="Background Image">
     </div>
-    <div class="content">
-        <h1>O ESTÁGIO TÁ <strong>ON!</strong></h1>
-        <p>Aqui o seu talento encontra <strong>oportunidades!</strong></p>
 
+    <div class="login-container">
+
+        <div class="content">
+            <h1>O ESTÁGIO TÁ <strong>ON!</strong></h1>
+            <p>Aqui o seu talento encontra <strong>oportunidades!</strong></p>
+
+        </div>
+        <div class="login-form">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+                <button type="submit">Entrar</button>
+
+                <a class="button-cadastre" th:href="@{/aluno/novo}"
+                   type="submit">Procurando um Estágio? Clique aqui!</a>
+                <a class="button-cadastre" th:href="@{/empresas/novo}" type="submit">Tem um estágio para oferecer? Clique Aqui!</a>
+            </form>
+        </div>
     </div>
-    <div class="login-form">
-        <h2>Login</h2>
-        <form action="/login" method="post">
-            <label for="username">Usuário</label>
-            <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
 
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+    <div th:replace="~{/home :: footer}"></div>
 
-            <button type="submit">Entrar</button>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
 
-            <a class="button-cadastre" th:href="@{/aluno/novo}"
-               type="submit">Procurando um Estágio? Clique aqui!</a>
-            <a class="button-cadastre" th:href="@{/empresas/novo}" type="submit">Tem um estágio para oferecer? Clique Aqui!</a>
-        </form>
-    </div>
-</div>
-
-<footer class="footer" th:fragment="footer">
-    <span>&copy; 2024 ArmyAnts - IFPB</span>
-</footer>
-
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-<script th:src="@{/js/popper.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
