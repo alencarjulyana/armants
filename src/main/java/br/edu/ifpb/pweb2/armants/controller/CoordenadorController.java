@@ -92,7 +92,7 @@ public class CoordenadorController {
     public String editarEmpresa(@PathVariable Long id, Model model) {
         Empresa empresa = empresaService.findById(id).orElseThrow(() -> new RuntimeException("Empresa não encontrada"));
         model.addAttribute("empresas", empresa);
-        return "coordenador/editarEmpresas";
+        return "coordenador/listaEmpresas";
     }
 
     @PostMapping("/empresas/editar/{id}")
