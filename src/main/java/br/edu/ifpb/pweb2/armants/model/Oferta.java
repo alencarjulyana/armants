@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
 public class Oferta {
 
     @Setter

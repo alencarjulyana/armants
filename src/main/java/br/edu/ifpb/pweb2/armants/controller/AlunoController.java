@@ -7,6 +7,7 @@ import br.edu.ifpb.pweb2.armants.service.OfertaService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,6 +46,7 @@ public class AlunoController {
     }
 
     @GetMapping("/ofertas")
+    @PreAuthorize("hasAnyRole('COORDENADOR','EMPRESA','ALUNO')")
     public String listarOfertas(
             @RequestParam(value = "habilidadesDesejaveis", required = false) String habilidadesDesejaveis,
             @RequestParam(value = "habilidadesNecessarias", required = false) String habilidadesNecessarias,
@@ -80,7 +82,8 @@ public class AlunoController {
     }
 
     @GetMapping("/ofertas/{id}")
-    public String mostrarDetalhesOferta(@PathVariable Long id, Model model, HttpSession session) {
+    @PreAuthorize("hasRole('COORDENADOR','ALUNO')")
+    public String mostrarDetalhesOferta(@PathVariable("id") Long id, Model model, HttpSession session) {
         Aluno aluno = (Aluno) session.getAttribute("aluno");
         if (aluno == null) {
             return "redirect:/aluno/cadastro";
@@ -100,7 +103,8 @@ public class AlunoController {
     }
 
     @PostMapping("/ofertas/{id}/candidatar")
-    public String candidatarOferta(@PathVariable Long id, HttpSession session) {
+    @PreAuthorize("hasRole('COORDENADOR','ALUNO')")
+    public String candidatarOferta(@PathVariable("id") Long id, HttpSession session) {
         Aluno aluno = (Aluno) session.getAttribute("aluno");
         if (aluno == null) {
             return "redirect:/aluno/cadastro";
@@ -116,6 +120,4 @@ public class AlunoController {
         return "redirect:/aluno/ofertas?habilidadesDesejaveis=&habilidadesNecessarias=&preRequisitos=";
     }
 }
-
-
 
