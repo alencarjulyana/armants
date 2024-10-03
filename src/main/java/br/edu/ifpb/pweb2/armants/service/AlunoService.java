@@ -19,8 +19,7 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void save(Aluno aluno) {
         aluno.setSenha(passwordEncoder.encode(aluno.getSenha())); // Encripta a senha
