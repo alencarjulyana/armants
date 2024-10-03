@@ -1,55 +1,80 @@
 package br.edu.ifpb.pweb2.armants.config;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import javax.sql.DataSource;
+
+import static org.springframework.security.core.userdetails.User.withUsername;
+
 @Configuration
-@RequiredArgsConstructor
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-    private final AuthenticationConfiguration authConfiguration;
+
+    @Autowired
+    private DataSource dataSource;
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    protected SecurityFilterChain configure(HttpSecurity http) throws Exception{
+
         http
-                .csrf().disable() // Disable CSRF if needed for your case
-                .headers(headers -> headers
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin
-                        )
-                )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/aluno/cadastro", "/registro", "/registrar").permitAll()
-                        .requestMatchers("/webjars/**").permitAll() // Allow access to WebJars resources
-                        .anyRequest().permitAll() // All other requests require authentication
-                )
-                .formLogin(form -> form
-                        .loginPage("/aluno/cadastro") // Custom login page
-                        .permitAll() // Allow everyone to access the login page
-                        .defaultSuccessUrl("/", true) // Redirect after successful login
-                        .failureUrl("/aluno/cadastro?error=true") // Redirect after failed login
-                )
-                .logout(LogoutConfigurer::permitAll // Allow everyone to access the logout
-                );
+                    .requestMatchers("/css/**", "/imagens/**", "/", "/empresas/novo", "/aluno/novo", "auth/**").permitAll()
+//                    .requestMatchers("/coordenador/ofertas-estagio")
+//                    .hasAnyRole("COORDENADOR", "EMPRESA")
+//                    .requestMatchers("/**").hasRole("COORDENADOR")
+                    .anyRequest().authenticated())
+                .formLogin((form) -> form
+                        .loginPage("/auth/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll())
+                .logout((logout) -> logout.logoutUrl("auth/logout"));
 
         return http.build();
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
-        return authConfiguration.getAuthenticationManager();
+    public UserDetailsService userDetailsService(){
+        UserDetails teste = withUsername("teste").password(passwordEncoder().encode("teste")).roles("COORDENADOR").build();
+        UserDetails empresa = User.withUsername("empresa").password(passwordEncoder().encode("empresa")).roles("EMPRESA").build();
+        UserDetails aluno = User.withUsername("aluno").password(passwordEncoder().encode("aluno")).roles("ALUNO").build();
+
+        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
+
+        if(!users.userExists(teste.getUsername())){
+            users.createUser(teste);
+            users.createUser(empresa);
+            users.createUser(aluno);
+        }
+
+        return users;
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService());
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
     }
 }
 
