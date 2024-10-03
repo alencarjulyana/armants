@@ -62,6 +62,7 @@ public class CoordenadorController {
     }
 
     @GetMapping("/ofertas-estagio/{id}")
+    @PreAuthorize("hasAnyRole('COORDENADOR','ALUNO', 'EMPRESA')")
     public String detalhesOfertaEstagio(@PathVariable("id") Long id, Model model) {
         Oferta oferta = ofertaService.findById(id).orElse(null);
         if (oferta == null) {

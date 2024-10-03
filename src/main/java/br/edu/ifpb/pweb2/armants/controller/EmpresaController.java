@@ -42,7 +42,7 @@ public class EmpresaController {
         }
 
         if (empresaService.cnpjJaExiste(empresa.getCnpj())) {
-            model.addAttribute("cnpjError", "CNPJ j√° cadastrado.");
+            model.addAttribute("cnpjError", "CNPJ j· cadastrado.");
             return "empresas/cadastro";
         }
 

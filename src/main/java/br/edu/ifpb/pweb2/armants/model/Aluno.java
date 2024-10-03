@@ -20,21 +20,21 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Nome √© obrigat√≥rio")
+    @NotEmpty(message = "Nome È obrigatÛrio")
     private String nome;
 
-    @NotEmpty(message = "Matr√≠cula √© obrigat√≥ria")
-    @Size(min = 5, max = 10, message = "Matr√≠cula deve ter entre 5 e 10 caracteres")
+    @NotEmpty(message = "MatrÌcula È obrigatÛria")
+    @Size(min = 5, max = 10, message = "MatrÌcula deve ter entre 5 e 10 caracteres")
     private String matricula;
 
-    @NotEmpty(message = "CPF √© obrigat√≥rio")
-    @Pattern(regexp = "\\d{11}", message = "CPF deve ter 11 d√≠gitos")
+    @NotEmpty(message = "CPF È obrigatÛrio")
+    @Pattern(regexp = "\\d{11}", message = "CPF deve ter 11 dÌgitos")
     private String cpf;
 
-    @NotEmpty(message = "Nome de usu√°rio √© obrigat√≥rio")
+    @NotEmpty(message = "Nome de usu·rio È obrigatÛrio")
     private String username;
 
-    @NotEmpty(message = "Senha √© obrigat√≥ria")
+    @NotEmpty(message = "Senha È obrigatÛria")
     @Size(min = 6, message = "Senha deve ter pelo menos 6 caracteres")
     private String senha;
 
