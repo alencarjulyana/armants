@@ -5,11 +5,11 @@ import br.edu.ifpb.pweb2.armants.service.EmpresaService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,7 +42,7 @@ public class EmpresaController {
         }
 
         if (empresaService.cnpjJaExiste(empresa.getCnpj())) {
-            model.addAttribute("cnpjError", "CNPJ j√° cadastrado.");
+            model.addAttribute("cnpjError", "CNPJ j· cadastrado.");
             return "empresas/cadastro";
         }
 
@@ -65,7 +65,8 @@ public class EmpresaController {
     }
 
     @GetMapping("/{id}/download-documento")
-    public ResponseEntity downloadDocumentoComprovacao(@PathVariable Long id) {
+    @PreAuthorize("hasAnyRole('COORDENADOR','EMPRESA')")
+    public ResponseEntity downloadDocumentoComprovacao(@PathVariable("id") Long id) {
         Optional<Empresa> empresa = empresaService.findById(id);
 
         if (empresa.isEmpty()) {
@@ -83,7 +84,5 @@ public class EmpresaController {
             return new ResponseEntity<>(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
         }
     }
-
-
 
 }
